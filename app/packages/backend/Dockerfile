@@ -18,6 +18,10 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     yarn config set python /usr/bin/python3
 
+# Install cookiecutter and mkdocs
+RUN pip3 install mkdocs-techdocs-core==1.0.2 mkdocs-macros-plugin==0.6.0
+RUN pip3 install cookiecutter 
+
 # From here on we use the least-privileged `node` user to run the backend.
 USER node
 WORKDIR /app
