@@ -8,4 +8,5 @@ How to setup Backstage with DevOps in mind.
 * cd app && yarn dev
 * Add Github Discovery
   * yarn add --cwd packages/backend @backstage/plugin-catalog-backend-module-github
- 
+* Add Github PR
+  * yarn add --cwd packages/backend @roadiehq/backstage-plugin-github-pull-requests
