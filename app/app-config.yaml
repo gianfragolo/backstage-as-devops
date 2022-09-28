@@ -65,3 +65,8 @@ catalog:
       target: https://github.com/gianfragolo/backstage-metadata/blob/main/catalog-info.yaml
       rules:
         - allow: [Component]
+    - type: url
+      target: https://github.com/gianfragolo/backstage-metadata/blob/main/templates/nodejs/template.yaml
+      rules:
+        - allow: [template]
+        
