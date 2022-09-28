@@ -32,8 +32,8 @@ jobs:
 
       - run: echo "${{ steps.vars.outputs.tag }}"
 
-      - name: Environment Printer
-        uses: managedkaos/print-env@v1.0
+      # - name: Environment Printer
+      #   uses: managedkaos/print-env@v1.0
 
       - uses: actions/setup-python@v2
         with:
