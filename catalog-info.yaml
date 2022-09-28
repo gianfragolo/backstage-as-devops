@@ -8,6 +8,9 @@ metadata:
       title: Website
     - url: https://github.com/gianfragolo/
       title: Github
+    - url: https://doh22-backstage-dockerapp.scm.azurewebsites.net/api/logstream
+      title: Azure Log Stream
+
   # Example for optional annotations
   annotations:
     github.com/project-slug: gianfragolo/backstage-as-devops
