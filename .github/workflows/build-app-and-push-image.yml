@@ -1,4 +1,4 @@
-name: 'Build and Push Image'
+name: "Build and Push Image"
 
 on:
   push:
@@ -26,13 +26,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
+
       - id: vars
-        run: |
-          if [[ ! "$GITHUB_REF" =~ refs/tags ]]; then
-            echo "::set-output name=tag::$(echo $GITHUB_SHA | cut -c 1-8)"
-          else
-            echo "::set-output name=tag::$(echo $GITHUB_REF | cut -d / -f 3)"
-          fi
+        run: echo "::set-output name=tag::$(echo $GITHUB_REF | cut -d / -f 3)"
 
       - run: echo "${{ steps.vars.outputs.tag }}"
 
@@ -47,17 +43,11 @@ jobs:
         with:
           node-version: "16"
 
-      - name: yarn install
-        run: yarn install --frozen-lockfile
-
-      - name: yarn tsc
-        run: yarn tsc
-
       - name: yarn build
-        run: yarn build
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        run: |
+          yarn install --frozen-lockfile
+          yarn tsc
+          yarn build
 
       - name: Login to DockerHub
         uses: docker/login-action@v2
@@ -65,7 +55,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push Backstage image to DockerHub
+      - name: Build and push image
         uses: docker/build-push-action@v2
         with:
           push: true
@@ -76,7 +66,7 @@ jobs:
           build-args: |
             image_version=${{ steps.vars.outputs.tag }}
 
-      - name: Repository Dispatch
+      - name: Dispatch build image event
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
