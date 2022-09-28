@@ -5,6 +5,8 @@ metadata:
   description: DevOps Heroes 2022 a sample Backstage app.
   links:
     - url: https://doh22-backstage-dockerapp.azurewebsites.net/
+      title: Website
+    - url: https://github.com/gianfragolo/
       title: Github
   # Example for optional annotations
   annotations:
