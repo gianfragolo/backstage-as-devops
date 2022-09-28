@@ -1,0 +1,107 @@
+name: "Deploy Backstage Infrastructure"
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "infra/**/*"
+  push:
+    branches:
+      - main
+    paths:
+      - "infra/**/*"
+
+  workflow_dispatch:
+
+  repository_dispatch:
+    types: [build-image]
+
+  # workflow_run:
+  #   workflows: ["Build and Push Image"]
+  #   branches: [main]
+  #   types:
+  #     - completed
+
+env:
+  infra_dir: infra
+  TF_LOG: INFO
+  ARM_ACCESS_KEY: ${{ secrets.ARM_ACCESS_KEY }}
+  ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+  ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+  TF_VAR_AUTH_GITHUB_CLIENT_ID: ${{ secrets.AUTH_GITHUB_CLIENT_ID }}
+  TF_VAR_AUTH_GITHUB_CLIENT_SECRET: ${{ secrets.AUTH_GITHUB_CLIENT_SECRET }}
+  TF_VAR_GITHUB_TOKEN: ${{ secrets.BACKSTAGE_GITHUB_TOKEN }}
+  TF_VAR_DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+  TF_VAR_DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./${{env.infra_dir}}
+    outputs:
+      tag: ${{ steps.vars.outputs.tag }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set current IMAGE_TAG
+        id: vars
+        run: |
+          if [ -z "${{ github.event.client_payload.tag }}"]; then echo "::set-output name=tag::latest"; exit 0; else echo "::set-output name=tag::${{github.event.client_payload.tag}}"; fi;
+
+      - name: Get current IMAGE_TAG
+        run: echo "${{ steps.vars.outputs.tag }}" "${{ github.event_name }}" "${{ github.ref }}"
+
+      - name: Terraform Setup
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.2.7
+
+      - name: Terraform Debug
+        id: debug
+        run: printenv | sort
+
+      - name: Terraform fmt check
+        continue-on-error: true
+        run: terraform fmt
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -input=false
+
+      - name: Terraform Plan
+        id: plan
+        env:
+          TF_VAR_IMAGE_TAG: ${{ steps.vars.outputs.tag }}
+        continue-on-error: true
+        run: |
+          terraform plan -input=false -no-color -out=tfplan \
+          && terraform show -no-color tfplan
+      
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1
+
+      - name: Terraform Apply
+        env:
+          TF_VAR_IMAGE_TAG: ${{ steps.vars.outputs.tag }}
+        run: terraform apply -auto-approve -input=false
+
+      - name: Terraform Create Deploy Issue
+        uses: alialaa/issue-action@v1
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'repository_dispatch')
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: Deploy Succeded - tag/${{ steps.vars.outputs.tag }} 
+          body: "#### ☄️ Terraform has succefully deployed image lucamilan/backstage:${{ steps.vars.outputs.tag }}\n"
+          assignees: |
+              lucamilan
