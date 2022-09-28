@@ -28,9 +28,11 @@ jobs:
           fetch-depth: 0
 
       - id: vars
+        name: Set current Image TAG
         run: echo "::set-output name=tag::$(echo $GITHUB_REF | cut -d / -f 3)"
 
-      - run: echo "${{ steps.vars.outputs.tag }}"
+      - name: Print current Image TAG
+        run: echo "${{ steps.vars.outputs.tag }}"
 
       # - name: Environment Printer
       #   uses: managedkaos/print-env@v1.0
