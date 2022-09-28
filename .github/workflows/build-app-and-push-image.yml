@@ -13,7 +13,7 @@ env:
   app_dir: app
 
 jobs:
-  build:
+  build-and-push-image:
     runs-on: ubuntu-latest
     defaults:
       run:
