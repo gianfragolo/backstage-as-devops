@@ -6,5 +6,6 @@ How to setup Backstage with DevOps in mind.
 
 * npx @backstage/create-app
 * cd app && yarn dev
-
+* Add Github Discovery
+  * yarn add --cwd packages/backend @backstage/plugin-catalog-backend-module-github
  
