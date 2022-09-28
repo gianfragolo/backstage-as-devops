@@ -47,9 +47,11 @@ resource "azurerm_linux_web_app" "dockerapp" {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
     APP_CONFIG_app_title                = "Backstage IMAGE:TAG:${var.IMAGE_TAG}"
     APP_CONFIG_app_baseUrl              = "https://${local.appName}.azurewebsites.net:443"
-    APP_CONFIG_backend_listen_port      = "80"
+    APP_CONFIG_backend_listen_port      = "7007"
     APP_CONFIG_backend_baseUrl          = "https://${local.appName}.azurewebsites.net"
     APP_CONFIG_backend_cors_origin      = "https://${local.appName}.azurewebsites.net"
+    PORT                                = "80"
+    WEBSITES_PORT                       = "7007"
 
     GITHUB_TOKEN              = var.GITHUB_TOKEN
     AUTH_GITHUB_CLIENT_ID     = var.AUTH_GITHUB_CLIENT_ID

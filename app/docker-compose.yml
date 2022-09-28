@@ -1,0 +1,25 @@
+version: '3'
+name: backstage-remote
+
+services:
+  backstage:
+    image: lucamilan/backstage:latest
+    environment:
+      # This value must match the name of the postgres configuration block.
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      AUTH_GITHUB_CLIENT_ID: ${AUTH_GITHUB_CLIENT_ID}
+      AUTH_GITHUB_CLIENT_SECRET: ${AUTH_GITHUB_CLIENT_SECRET}
+      APP_CONFIG_app_title: Demo
+      APP_CONFIG_organization_name: Demo
+      APP_CONFIG_app_baseUrl: http://localhost:80
+      APP_CONFIG_backend_baseUrl: http://localhost:80
+      APP_CONFIG_backend_listen_port: 80
+      APP_CONFIG_backend_cors_origin: http://localhost:80
+    ports:
+      - '80:80'
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
