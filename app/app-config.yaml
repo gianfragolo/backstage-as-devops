@@ -42,7 +42,12 @@ auth:
         clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
 
 scaffolder:
-  # see https://backstage.io/docs/features/software-templates/configuration for software template options
+  defaultAuthor:
+    name: Luca Milan # Defaults to `Scaffolder`
+    email: luca.milan@gmail.com # Defaults to `scaffolder@backstage.io`
+  github:
+    token: ${GITHUB_TOKEN}
+    visibility: public # or 'internal' or 'private'
 
 catalog:
   rules:
