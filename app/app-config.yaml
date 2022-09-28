@@ -54,6 +54,10 @@ catalog:
       rules:
         - allow: [Group, User]
     - type: url
+      target: https://github.com/gianfragolo/backstage-as-devops/blob/main/catalog-info.yaml
+      rules:
+        - allow: [Component]
+    - type: url
       target: https://github.com/gianfragolo/backstage-metadata/blob/main/domains-and-systems.yaml
       rules:
         - allow: [Component]
