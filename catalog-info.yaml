@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backstage
+  description: DevOps Heroes 2022 a sample Backstage app.
+  links:
+    - url: https://doh22-backstage-dockerapp.azurewebsites.net/
+      title: Github
+  # Example for optional annotations
+  annotations:
+    github.com/project-slug: gianfragolo/backstage-as-devops
+  #   backstage.io/techdocs-ref: dir:.
+spec:
+  type: website
+  system: process-improvement
+  owner: group:platform-engineering
+  lifecycle: experimental
