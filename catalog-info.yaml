@@ -14,7 +14,7 @@ metadata:
   # Example for optional annotations
   annotations:
     github.com/project-slug: gianfragolo/backstage-as-devops
-  #   backstage.io/techdocs-ref: dir:.
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: website
   system: process-improvement
