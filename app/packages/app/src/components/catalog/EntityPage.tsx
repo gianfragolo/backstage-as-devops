@@ -70,7 +70,7 @@ import {
 
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
-import { EntityGithubPullRequestsContent, EntityGithubPullRequestsOverviewCard } from '@roadiehq/backstage-plugin-github-pull-requests';
+import { isGithubPullRequestsAvailable, EntityGithubPullRequestsContent, EntityGithubPullRequestsOverviewCard } from '@roadiehq/backstage-plugin-github-pull-requests';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -136,9 +136,13 @@ const overviewContent = (
     <Grid item md={6} xs={12}>
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
-    <Grid item md={6}>
-      <EntityGithubPullRequestsOverviewCard />
-    </Grid>
+    <EntitySwitch>
+      <EntitySwitch.Case if={e => Boolean(isGithubPullRequestsAvailable(e))}>
+        <Grid item sm={4}>
+          <EntityGithubPullRequestsOverviewCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
     <Grid item md={4} xs={12}>
       <EntityLinksCard />
     </Grid>
@@ -200,6 +204,10 @@ const websiteEntityPage = (
       {cicdContent}
     </EntityLayout.Route>
 
+    <EntityLayout.Route path="/pull-requests" title="Pull Requests">
+      <EntityGithubPullRequestsContent />
+    </EntityLayout.Route>
+
     <EntityLayout.Route path="/dependencies" title="Dependencies">
       <Grid container spacing={3} alignItems="stretch">
         <Grid item md={6}>
@@ -230,6 +238,10 @@ const defaultEntityPage = (
       {overviewContent}
     </EntityLayout.Route>
 
+    <EntityLayout.Route path="/pull-requests" title="Pull Requests">
+      <EntityGithubPullRequestsContent />
+    </EntityLayout.Route>
+    
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
@@ -394,6 +406,7 @@ export const entityPage = (
     <EntitySwitch.Case if={isKind('user')} children={userPage} />
     <EntitySwitch.Case if={isKind('system')} children={systemPage} />
     <EntitySwitch.Case if={isKind('domain')} children={domainPage} />
+
     <EntitySwitch.Case>{defaultEntityPage}</EntitySwitch.Case>
   </EntitySwitch>
 );
