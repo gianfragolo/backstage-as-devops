@@ -51,7 +51,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: yarn tsc
-        run: yarn tsc:full
+        run: yarn tsc
 
       - name: yarn build
         run: yarn build
