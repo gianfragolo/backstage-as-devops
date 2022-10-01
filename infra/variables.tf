@@ -40,3 +40,24 @@ variable "DOCKERHUB_TOKEN" {
   sensitive   = true
   type        = string
 }
+
+
+variable "OKTETO_URL" {
+  description = "Okteto url"
+  sensitive   = true
+  type        = string
+}
+
+
+variable "OKTETO_TOKEN" {
+  description = "Okteto secret"
+  sensitive   = true
+  type        = string
+}
+
+
+variable "OKTETO_CADATA" {
+  description = "Okteto CA Data"
+  sensitive   = true
+  type        = string
+}
