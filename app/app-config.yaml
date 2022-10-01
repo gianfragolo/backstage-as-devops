@@ -50,6 +50,20 @@ scaffolder:
     token: ${GITHUB_TOKEN}
     visibility: public # or 'internal' or 'private'
 
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - url: ${OKTETO_URL}
+          name: okteto
+          authProvider: 'serviceAccount'
+          skipTLSVerify: false
+          skipMetricsLookup: true          
+          serviceAccountToken: ${OKTETO_TOKEN}
+          caData: ${OKTETO_CADATA}
+
 catalog:
   rules:
     - allow: [User, Group, Component, System, API, Resource, Location, Domain]

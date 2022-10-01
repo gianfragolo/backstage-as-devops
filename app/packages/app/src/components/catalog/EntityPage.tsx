@@ -72,6 +72,7 @@ import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 import { isGithubPullRequestsAvailable, EntityGithubPullRequestsContent, EntityGithubPullRequestsOverviewCard } from '@roadiehq/backstage-plugin-github-pull-requests';
 import { EntityGithubInsightsContent } from '@roadiehq/backstage-plugin-github-insights';
+import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -171,6 +172,10 @@ const serviceEntityPage = (
       path="/code-insights"
       title="Code Insights">
       <EntityGithubInsightsContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/kubernetes" title="Kubernetes">
+      <EntityKubernetesContent refreshIntervalMs={5000} />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/api" title="API">
