@@ -96,4 +96,8 @@ catalog:
       target: https://github.com/gianfragolo/backstage-metadata/blob/main/templates/dotnet-rest-service/template.yaml
       rules:
         - allow: [template]
+    - type: url
+      target: https://github.com/gianfragolo/backstage-metadata/blob/main/templates/dotnet-razor-webapp/template.yaml
+      rules:
+        - allow: [template]
         
