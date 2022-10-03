@@ -3,7 +3,7 @@ app:
   baseUrl: http://localhost:3000
 
 organization:
-  name: Gianfragolo Catalog
+  name: Gianfragolo (by DOH 2022)
 
 backend:
   baseUrl: http://localhost:7007
@@ -17,6 +17,9 @@ backend:
     origin: http://localhost:3000
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
+  reading:
+    allow:
+      - host: '*.cloud.okteto.net'  
   database:
     client: better-sqlite3
     connection: ":memory:"
