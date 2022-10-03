@@ -17,5 +17,4 @@ How to setup Backstage with DevOps in mind.
   * yarn add --cwd packages/backend @backstage/plugin-kubernetes-backend
 
 ### List Actions
-
 https://localhost:3000/create/actions
