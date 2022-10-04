@@ -36,7 +36,7 @@ techdocs:
   generator:
     runIn: "local" # Alternatives - 'local'
   publisher:
-    type: "local" # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
+    type: "local" # Alternatives - 'googleGcs' or 'awsS3'.
 
 auth:
   providers:
@@ -71,7 +71,6 @@ catalog:
   rules:
     - allow: [User, Group, Component, System, API, Resource, Location, Domain]
   locations:
-    # Local example organizational data
     - type: github-org
       target: https://github.com/gianfragolo
       rules:
