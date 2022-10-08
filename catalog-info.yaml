@@ -6,15 +6,19 @@ metadata:
   links:
     - url: https://doh22-backstage-dockerapp.azurewebsites.net/
       title: Website
-    - url: https://github.com/gianfragolo/
+    - url: https://github.com/gianfragolo/backstage-as-devops
       title: Github
     - url: https://doh22-backstage-dockerapp.scm.azurewebsites.net/api/logstream
       title: Azure Log Stream
-
+  tags:
+    - backstage
+    - developer-experience
+    - service-catalogue
   # Example for optional annotations
   annotations:
     github.com/project-slug: gianfragolo/backstage-as-devops
     backstage.io/techdocs-ref: dir:.
+    backstage.io/adr-location: https://github.com/gianfragolo/backstage-as-devops/tree/main/docs/adrs
 spec:
   type: website
   system: process-improvement

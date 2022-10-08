@@ -2,6 +2,14 @@
 
 How to setup Backstage with DevOps in mind.
 
+## What is Gianfragolo Developer Portal ?
+
+An Engineering portal for APIs, events and reusable assets to enhance developer experience.
+
+Gianfragolo Developer Portal is powered by Backstage, with few enhancements and additional plugins built.
+
+Backstage is an open platform for building developer portals. Backstage unifies all infrastructure tooling, services, and documentation to create a streamlined development environment from end to end.
+
 ## List Domains & Systems
 
 [Domains](https://doh22-backstage-dockerapp.azurewebsites.net/catalog?filters%5Bkind%5D=domain&filters%5Buser%5D=owned)
