@@ -99,4 +99,12 @@ catalog:
       target: https://github.com/gianfragolo/backstage-metadata/blob/main/templates/dotnet-razor-webapp/template.yaml
       rules:
         - allow: [template]
+    - type: url
+      target: https://github.com/gianfragolo/backstage-metadata/blob/main/resources/identity.yaml
+      rules:
+        - allow: [resource]
+    - type: url
+      target: https://github.com/gianfragolo/backstage-metadata/blob/main/resources/databases.yaml
+      rules:
+        - allow: [resource]
         
