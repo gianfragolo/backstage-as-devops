@@ -24,4 +24,4 @@ spec:
   system: process-improvement
   owner: group:platform-engineering
   lifecycle: experimental
-  dependsOn: ["component:backstage-metadata"]
+  dependsOn: ["component:backstage-metadata", "resource:github-oauth"]
