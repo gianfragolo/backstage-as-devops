@@ -42,6 +42,7 @@ import {
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import MoneyIcon from '@material-ui/icons/MonetizationOn';
 
 const useSidebarLogoStyles = makeStyles({
   root: {
@@ -94,6 +95,7 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         {/* End global nav */}
         <SidebarDivider />
         <SidebarScrollWrapper>
+          <SidebarItem icon={MoneyIcon} to="cost-insights" text="Cost Insights" />
           <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
         </SidebarScrollWrapper>
       </SidebarGroup>

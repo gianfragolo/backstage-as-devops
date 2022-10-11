@@ -40,6 +40,14 @@ import { SignInPage } from '@backstage/core-components';
 import { HomepageCompositionRoot } from '@backstage/plugin-home';
 import { HomePage } from './components/home/HomePage';
 
+// CostInsights
+import {
+  CostInsightsLabelDataflowInstructionsPage,
+  CostInsightsPage,
+  CostInsightsProjectGrowthInstructionsPage,
+} from '@backstage/plugin-cost-insights';
+
+//  theme
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import LightIcon from '@material-ui/icons/WbSunny';
 import {
@@ -259,6 +267,15 @@ const routes = (
     >
       {entityPage}
     </Route>
+    <Route path="/cost-insights" element={<CostInsightsPage />} />
+    <Route
+      path="/cost-insights/investigating-growth"
+      element={<CostInsightsProjectGrowthInstructionsPage />}
+    />
+    <Route
+      path="/cost-insights/labeling-jobs"
+      element={<CostInsightsLabelDataflowInstructionsPage />}
+    />
     <Route path="/docs" element={<TechDocsIndexPage />} />
     <Route
       path="/docs/:namespace/:kind/:name/*"

@@ -20,6 +20,8 @@
         "@backstage/plugin-catalog-graph": "^0.2.21",
         "@backstage/plugin-catalog-import": "^0.8.12",
         "@backstage/plugin-catalog-react": "^1.1.4",
+        "@backstage/plugin-cost-insights": "^0.11.31",
+        "@backstage/plugin-explore-react": "^0.0.21",
         "@backstage/plugin-github-actions": "^0.5.9",
         "@backstage/plugin-home": "^0.4.25",
         "@backstage/plugin-kubernetes": "^0.7.2",
