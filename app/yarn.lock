@@ -1937,6 +1937,23 @@
   dependencies:
     "@backstage/core-plugin-api" "^1.0.6"
 
+"@backstage/plugin-explore@^0.3.40":
+  version "0.3.40"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-explore/-/plugin-explore-0.3.40.tgz#2871dd62f69b2e7ce420d1a47c6f2afb40241cbd"
+  integrity sha512-Pg1olQ/Qdfx3GGLNW2qQO2QSVpx3blCm6BmGaL1BHEU52MHi0pA/FL50+3MLVI09FaibIGdhuX7IwEv6zK3Efg==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.1"
+    "@backstage/core-components" "^0.11.1"
+    "@backstage/core-plugin-api" "^1.0.6"
+    "@backstage/plugin-catalog-react" "^1.1.4"
+    "@backstage/plugin-explore-react" "^0.0.21"
+    "@backstage/theme" "^0.2.16"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.57"
+    classnames "^2.2.6"
+    react-use "^17.2.4"
+
 "@backstage/plugin-github-actions@^0.5.9":
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-github-actions/-/plugin-github-actions-0.5.9.tgz#a18e117ced5979a090185b2c2b6e422e44f4418e"
@@ -6406,6 +6423,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@backstage/plugin-catalog-import" "^0.8.12"
     "@backstage/plugin-catalog-react" "^1.1.4"
     "@backstage/plugin-cost-insights" "^0.11.31"
+    "@backstage/plugin-explore-react" "^0.0.21"
     "@backstage/plugin-github-actions" "^0.5.9"
     "@backstage/plugin-home" "^0.4.25"
     "@backstage/plugin-kubernetes" "^0.7.2"

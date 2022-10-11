@@ -1,9 +1,17 @@
 app:
   title: DevOps Heroes 2022
   baseUrl: http://localhost:3000
+  support:
+    url: https://github.com/backstage/backstage/issues
+    items: # Used by common SupportButton component
+      - title: Contact Support
+        icon: supportagent
+        links:
+          - url: https://www.linkedin.com/events/devopsheroesparma20226933040399229853696/about/
+            title: Chat
 
 organization:
-  name: Gianfragolo (by DOH 2022)
+  name: Gianfragolo
 
 backend:
   baseUrl: http://localhost:7007

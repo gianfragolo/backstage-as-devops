@@ -47,6 +47,9 @@ import {
   CostInsightsProjectGrowthInstructionsPage,
 } from '@backstage/plugin-cost-insights';
 
+//  explore
+import { explorePlugin, ExplorePage } from '@backstage/plugin-explore';
+
 //  theme
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import LightIcon from '@material-ui/icons/WbSunny';
@@ -99,6 +102,9 @@ const app = createApp({
     ),
   },
   bindRoutes({ bind }) {
+    bind(explorePlugin.externalRoutes, {
+      catalogEntity: catalogPlugin.routes.catalogEntity,
+    });
     bind(catalogPlugin.externalRoutes, {
       createComponent: scaffolderPlugin.routes.root,
       viewTechDoc: techdocsPlugin.routes.docRoot,
@@ -267,6 +273,7 @@ const routes = (
     >
       {entityPage}
     </Route>
+    <Route path="/explore" element={<ExplorePage />} />
     <Route path="/cost-insights" element={<CostInsightsPage />} />
     <Route
       path="/cost-insights/investigating-growth"
