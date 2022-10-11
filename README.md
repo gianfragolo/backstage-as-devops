@@ -37,3 +37,5 @@ Backstage is an open platform for building developer portals. Backstage unifies 
 * Add K8s plugin
   * yarn add --cwd packages/app @backstage/plugin-kubernetes
   * yarn add --cwd packages/backend @backstage/plugin-kubernetes-backend
+* Add Home Plugin
+  * yarn add --cwd packages/app @backstage/plugin-home

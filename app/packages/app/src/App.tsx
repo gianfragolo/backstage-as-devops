@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, Route } from 'react-router';
+import { Route } from 'react-router';
 import { apiDocsPlugin, ApiExplorerPage } from '@backstage/plugin-api-docs';
 import {
   CatalogEntityPage,
@@ -36,8 +36,46 @@ import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/
 import { githubAuthApiRef } from '@backstage/core-plugin-api';
 import { SignInPage } from '@backstage/core-components';
 
+// custom
+import { HomepageCompositionRoot } from '@backstage/plugin-home';
+import { HomePage } from './components/home/HomePage';
+
+import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import LightIcon from '@material-ui/icons/WbSunny';
+import {
+  createTheme,
+  genPageTheme,
+  lightTheme,
+  darkTheme,
+  shapes,
+} from '@backstage/theme';
+
 const app = createApp({
   apis,
+  themes: [
+    {
+      id: 'my-theme',
+      title: 'Go Visit Theme',
+      variant: 'light',
+      icon: <LightIcon />,
+      Provider: ({ children }) => (
+        <ThemeProvider theme={myTheme}>
+          <CssBaseline>{children}</CssBaseline>
+        </ThemeProvider>
+      ),
+    },
+    {
+      id: 'my-theme-dark',
+      title: 'Smart Visit Theme',
+      variant: 'dark',
+      icon: <LightIcon />,
+      Provider: ({ children }) => (
+        <ThemeProvider theme={myThemeDark}>
+          <CssBaseline>{children}</CssBaseline>
+        </ThemeProvider>
+      ),
+    },
+  ],
   components: {
     SignInPage: props => (
       <SignInPage
@@ -72,9 +110,148 @@ const app = createApp({
 const AppProvider = app.getProvider();
 const AppRouter = app.getRouter();
 
+const myTheme = createTheme({
+  palette: {
+    ...lightTheme.palette,
+    primary: {
+      main: '#343b58',
+    },
+    secondary: {
+      main: '#565a6e',
+    },
+    error: {
+      main: '#8c4351',
+    },
+    warning: {
+      main: '#8f5e15',
+    },
+    info: {
+      main: '#34548a',
+    },
+    success: {
+      main: '#485e30',
+    },
+    background: {
+      default: '#d5d6db',
+      paper: '#d5d6db',
+    },
+    banner: {
+      info: '#34548a',
+      error: '#8c4351',
+      text: '#343b58',
+      link: '#565a6e',
+    },
+    errorBackground: '#8c4351',
+    warningBackground: '#8f5e15',
+    infoBackground: '#343b58',
+    navigation: {
+      background: '#343b58',
+      indicator: '#8f5e15',
+      color: '#d5d6db',
+      selectedColor: '#ffffff',
+    },
+  },
+  defaultPageTheme: 'home',
+  fontFamily: 'Arial',
+  pageTheme: {
+    home: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.wave }),
+    documentation: genPageTheme({
+      colors: ['#8c4351', '#343b58'],
+      shape: shapes.wave2,
+    }),
+    tool: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.round }),
+    service: genPageTheme({
+      colors: ['#8c4351', '#343b58'],
+      shape: shapes.wave,
+    }),
+    website: genPageTheme({
+      colors: ['#8c4351', '#343b58'],
+      shape: shapes.wave,
+    }),
+    library: genPageTheme({
+      colors: ['#8c4351', '#343b58'],
+      shape: shapes.wave,
+    }),
+    other: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.wave }),
+    app: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.wave }),
+    apis: genPageTheme({ colors: ['#8c4351', '#343b58'], shape: shapes.wave }),
+  },
+});
+
+const myThemeDark = createTheme({
+  palette: {
+    ...darkTheme.palette,
+    primary: {
+      main: '#017a7a',
+    },
+    secondary: {
+      main: '#017a7a',
+    },
+    error: {
+      main: '#8c4351',
+    },
+    warning: {
+      main: '#8f5e15',
+    },
+    info: {
+      main: '#34548a',
+    },
+    success: {
+      main: '#485e30',
+    },
+    background: {
+      default: '#06201f',
+      paper: '#0d4745',
+    },
+    banner: {
+      info: '#34548a',
+      error: '#8c4351',
+      text: '#343b58',
+      link: '#565a6e',
+    },
+    errorBackground: '#8c4351',
+    warningBackground: '#8f5e15',
+    infoBackground: '#017a7a',
+    navigation: {
+      background: '#0d4745',
+      indicator: '#017a7a',
+      color: '#d5d6db',
+      selectedColor: '#ffffff',
+    },
+  },
+  defaultPageTheme: 'home',
+  fontFamily: 'Arial',
+  pageTheme: {
+    home: genPageTheme({ colors: ['#017a7a', '#0d4745'], shape: shapes.wave }),
+    documentation: genPageTheme({
+      colors: ['#017a7a', '#0d4745'],
+      shape: shapes.wave2,
+    }),
+    tool: genPageTheme({ colors: ['#017a7a', '#0d4745'], shape: shapes.round }),
+    service: genPageTheme({
+      colors: ['#017a7a', '#0d4745'],
+      shape: shapes.wave,
+    }),
+    website: genPageTheme({
+      colors: ['#017a7a', '#0d4745'],
+      shape: shapes.wave,
+    }),
+    library: genPageTheme({
+      colors: ['#017a7a', '#0d4745'],
+      shape: shapes.wave,
+    }),
+    other: genPageTheme({ colors: ['#017a7a', '#0d4745'], shape: shapes.wave }),
+    app: genPageTheme({ colors: ['#017a7a', '#0d4745'], shape: shapes.wave }),
+    apis: genPageTheme({ colors: ['#017a7a', '#0d4745'], shape: shapes.wave }),
+  },
+});
+
 const routes = (
   <FlatRoutes>
-    <Navigate key="/" to="catalog" />
+    {/* <Navigate key="/" to="catalog" /> */}
+    <Route path="/" element={<HomepageCompositionRoot />}>
+      <HomePage />
+    </Route>
     <Route path="/catalog" element={<CatalogIndexPage />} />
     <Route
       path="/catalog/:namespace/:kind/:name"
