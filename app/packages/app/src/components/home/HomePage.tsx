@@ -4,10 +4,6 @@ import {
   HomePageStarredEntities,
 } from '@backstage/plugin-home';
 
-import { configApiRef } from '@backstage/core-plugin-api';
-import { ConfigReader } from '@backstage/config';
-
-
 import { Content, Page, Header } from '@backstage/core-components';
 import { HomePageSearchBar } from '@backstage/plugin-search';
 import { SearchContextProvider } from '@backstage/plugin-search-react';

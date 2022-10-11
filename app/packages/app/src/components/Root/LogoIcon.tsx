@@ -1,3 +1,4 @@
+import React from 'react';
 import Logo from './devops_1.jpg';
 
 const LogoIcon = () => {
