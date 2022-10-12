@@ -107,6 +107,10 @@ catalog:
       rules:
         - allow: [Component]
     - type: url
+      target: https://github.com/gianfragolo/googlepay-wrapper/blob/master/catalog-info.yaml
+      rules:
+        - allow: [Component]
+    - type: url
       target: https://github.com/gianfragolo/payment-service/blob/master/catalog-info.yaml
       rules:
         - allow: [Component]        
