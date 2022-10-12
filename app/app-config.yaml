@@ -107,6 +107,10 @@ catalog:
       rules:
         - allow: [Component]
     - type: url
+      target: https://github.com/gianfragolo/payment-service/blob/master/catalog-info.yaml
+      rules:
+        - allow: [Component]        
+    - type: url
       target: https://github.com/gianfragolo/backstage-metadata/blob/main/templates/nodejs/template.yaml
       rules:
         - allow: [template]
