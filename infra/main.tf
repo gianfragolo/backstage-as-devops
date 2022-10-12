@@ -45,7 +45,7 @@ resource "azurerm_linux_web_app" "dockerapp" {
   # Do not attach Storage by default
   app_settings = {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
-    APP_CONFIG_app_title                = "Backstage IMAGE:TAG:${var.IMAGE_TAG}"
+    APP_CONFIG_app_title                = "Backstage-${var.IMAGE_TAG}"
     APP_CONFIG_app_baseUrl              = "https://${local.appName}.azurewebsites.net:443"
     APP_CONFIG_backend_listen_port      = "7007"
     APP_CONFIG_backend_baseUrl          = "https://${local.appName}.azurewebsites.net"
