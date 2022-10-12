@@ -79,11 +79,8 @@ kubernetes:
           caData: ${OKTETO_CADATA}
 
 proxy:
-  "/aws-news-feed":
-    target: "https://aws.amazon.com/about-aws/whats-new/recent/feed/"
-
-  "/reuters-news-feed":
-    target: "https://www.reutersagency.com/feed"
+  "/applepay-wrapper-lucamilan":
+    target: "https://applepay-wrapper-lucamilan.cloud.okteto.net"
 
 catalog:
   rules:
