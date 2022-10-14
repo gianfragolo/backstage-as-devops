@@ -8,8 +8,13 @@ metadata:
       title: Website
     - url: https://github.com/gianfragolo/backstage-as-devops
       title: Github
+      icon: github
+    - url: https://hub.docker.com/repository/docker/lucamilan/backstage
+      title: Dockerhub
+      icon: docker
     - url: https://doh22-backstage-dockerapp.scm.azurewebsites.net/api/logstream
-      title: Azure Log Stream
+      title: Azure Log Stream      
+      icon: cloud
   tags:
     - backstage
     - developer-experience
