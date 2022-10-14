@@ -75,6 +75,12 @@ import { EntityGithubInsightsContent } from '@roadiehq/backstage-plugin-github-i
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
 import { EntityAdrContent, isAdrAvailable } from '@backstage/plugin-adr';
 import { Mermaid } from 'backstage-plugin-techdocs-addon-mermaid';
+import { EntitySecurityInsightsContent } from '@roadiehq/backstage-plugin-security-insights';
+import {
+  EntitySecurityInsightsCard,
+  isSecurityInsightsAvailable
+} from '@roadiehq/backstage-plugin-security-insights';
+
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -148,6 +154,13 @@ const overviewContent = (
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
+    <EntitySwitch>
+      <EntitySwitch.Case if={isSecurityInsightsAvailable}>
+        <Grid item md={6}>
+          <EntitySecurityInsightsCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
     <Grid item md={4} xs={12}>
       <EntityLinksCard />
     </Grid>
@@ -207,10 +220,18 @@ const serviceEntityPage = (
       <EntityAdrContent />
     </EntityLayout.Route>
 
+    <EntityLayout.Route
+      path="/security-insights"
+      title="Security Insights">
+      <EntitySecurityInsightsContent />
+    </EntityLayout.Route>
+
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
   </EntityLayout>
+
+  
 );
 
 const websiteEntityPage = (
@@ -250,6 +271,12 @@ const websiteEntityPage = (
 
     <EntityLayout.Route if={isAdrAvailable} path="/adrs" title="ADRs">
       <EntityAdrContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route
+      path="/security-insights"
+      title="Security Insights">
+      <EntitySecurityInsightsContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/docs" title="Docs">
