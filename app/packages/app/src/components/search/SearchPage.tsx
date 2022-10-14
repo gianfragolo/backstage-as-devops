@@ -25,6 +25,7 @@ import {
 } from '@backstage/core-components';
 import { useApi } from '@backstage/core-plugin-api';
 import { AdrSearchResultListItem } from '@backstage/plugin-adr';
+import { AdrDocument } from '@backstage/plugin-adr-common';
 
 const useStyles = makeStyles((theme: Theme) => ({
   bar: {
@@ -119,7 +120,9 @@ const SearchPage = () => {
                           return (
                             <AdrSearchResultListItem
                               key={document.location}
-                              result={document}
+                              result={document as AdrDocument}
+                              highlight={highlight}
+                              rank={rank}
                             />
                           );  
                       case 'software-catalog':
