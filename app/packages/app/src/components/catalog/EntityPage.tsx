@@ -73,6 +73,7 @@ import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 import { isGithubPullRequestsAvailable, EntityGithubPullRequestsContent, EntityGithubPullRequestsOverviewCard } from '@roadiehq/backstage-plugin-github-pull-requests';
 import { EntityGithubInsightsContent } from '@roadiehq/backstage-plugin-github-insights';
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
+import { EntityAdrContent, isAdrAvailable } from '@backstage/plugin-adr';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -200,6 +201,10 @@ const serviceEntityPage = (
       </Grid>
     </EntityLayout.Route>
 
+    <EntityLayout.Route if={isAdrAvailable} path="/adrs" title="ADRs">
+      <EntityAdrContent />
+    </EntityLayout.Route>
+
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
@@ -239,6 +244,10 @@ const websiteEntityPage = (
           <EntityDependsOnResourcesCard variant="gridItem" />
         </Grid>
       </Grid>
+    </EntityLayout.Route>
+
+    <EntityLayout.Route if={isAdrAvailable} path="/adrs" title="ADRs">
+      <EntityAdrContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/docs" title="Docs">

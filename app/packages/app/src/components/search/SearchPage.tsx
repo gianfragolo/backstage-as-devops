@@ -24,6 +24,7 @@ import {
   Page,
 } from '@backstage/core-components';
 import { useApi } from '@backstage/core-plugin-api';
+import { AdrSearchResultListItem } from '@backstage/plugin-adr';
 
 const useStyles = makeStyles((theme: Theme) => ({
   bar: {
@@ -114,6 +115,13 @@ const SearchPage = () => {
                 <List>
                   {results.map(({ type, document, highlight, rank }) => {
                     switch (type) {
+                      case 'adr':
+                          return (
+                            <AdrSearchResultListItem
+                              key={document.location}
+                              result={document}
+                            />
+                          );  
                       case 'software-catalog':
                         return (
                           <CatalogSearchResultListItem

@@ -41,3 +41,4 @@ Backstage is an open platform for building developer portals. Backstage unifies 
   * yarn add --cwd packages/app @backstage/plugin-home
 * Add ADR Plugin
   * yarn --cwd packages/backend add @backstage/plugin-adr-backend
+  * yarn --cwd packages/app add @backstage/plugin-adr
