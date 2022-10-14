@@ -74,11 +74,13 @@ import { isGithubPullRequestsAvailable, EntityGithubPullRequestsContent, EntityG
 import { EntityGithubInsightsContent } from '@roadiehq/backstage-plugin-github-insights';
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
 import { EntityAdrContent, isAdrAvailable } from '@backstage/plugin-adr';
+import { Mermaid } from 'backstage-plugin-techdocs-addon-mermaid';
 
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
       <ReportIssue />
+      <Mermaid config={{ theme: 'forest', themeVariables: { lineColor: '#000000' } }} />
     </TechDocsAddons>
   </EntityTechdocsContent>
 );
