@@ -17,11 +17,11 @@ on:
   repository_dispatch:
     types: [build-image]
 
-  # workflow_run:
-  #   workflows: ["Build and Push Image"]
-  #   branches: [main]
-  #   types:
-  #     - completed
+  workflow_run:
+    workflows: ["Build and Push Image"]
+    branches: [main]
+    types:
+      - completed
 
 env:
   infra_dir: infra
@@ -83,14 +83,15 @@ jobs:
 
       - name: Terraform Plan
         id: plan
+        if: github.event_name == 'pull_request' || github.event_name == 'repository_dispatch'
         env:
           TF_VAR_IMAGE_TAG: ${{ steps.vars.outputs.tag }}
         continue-on-error: true
         run: |
           terraform plan -input=false -no-color -out=tfplan \
           && terraform show -no-color tfplan
-      
-      - name: Terraform Plan Status
+
+      - name: Terraform Plan Results
         if: steps.plan.outcome == 'failure'
         run: exit 1
 
@@ -101,10 +102,10 @@ jobs:
 
       - name: Terraform Create Deploy Issue
         uses: alialaa/issue-action@v1
-        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'repository_dispatch')
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'repository_dispatch' || github.event_name == 'workflow_dispatch')
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          title: Deploy Succeded - tag/${{ steps.vars.outputs.tag }} 
+          title: Deploy Succeded - tag/${{ steps.vars.outputs.tag }}
           body: "#### ☄️ Terraform has succefully deployed image lucamilan/backstage:${{ steps.vars.outputs.tag }}\n"
           assignees: |
-              lucamilan
+            lucamilan
