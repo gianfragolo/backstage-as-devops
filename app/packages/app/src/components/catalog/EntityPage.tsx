@@ -70,7 +70,11 @@ import {
 
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
-import { isGithubPullRequestsAvailable, EntityGithubPullRequestsContent, EntityGithubPullRequestsOverviewCard } from '@roadiehq/backstage-plugin-github-pull-requests';
+import {
+  isGithubPullRequestsAvailable,
+  EntityGithubPullRequestsContent,
+  EntityGithubPullRequestsOverviewCard,
+} from '@roadiehq/backstage-plugin-github-pull-requests';
 import { EntityGithubInsightsContent } from '@roadiehq/backstage-plugin-github-insights';
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
 import { EntityAdrContent, isAdrAvailable } from '@backstage/plugin-adr';
@@ -78,15 +82,17 @@ import { Mermaid } from 'backstage-plugin-techdocs-addon-mermaid';
 import { EntitySecurityInsightsContent } from '@roadiehq/backstage-plugin-security-insights';
 import {
   EntitySecurityInsightsCard,
-  isSecurityInsightsAvailable
+  isSecurityInsightsAvailable,
+  EntityGithubDependabotContent,
 } from '@roadiehq/backstage-plugin-security-insights';
-
 
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
       <ReportIssue />
-      <Mermaid config={{ theme: 'forest', themeVariables: { lineColor: '#000000' } }} />
+      <Mermaid
+        config={{ theme: 'forest', themeVariables: { lineColor: '#000000' } }}
+      />
     </TechDocsAddons>
   </EntityTechdocsContent>
 );
@@ -148,25 +154,21 @@ const overviewContent = (
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
     <EntitySwitch>
-      <EntitySwitch.Case if={e => Boolean(isGithubPullRequestsAvailable(e))}>
-        <Grid item sm={4}>
-          <EntityGithubPullRequestsOverviewCard />
-        </Grid>
-      </EntitySwitch.Case>
-    </EntitySwitch>
-    <EntitySwitch>
       <EntitySwitch.Case if={isSecurityInsightsAvailable}>
-        <Grid item md={6}>
+        <Grid item md={6} xs={12}>
           <EntitySecurityInsightsCard />
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
-    <Grid item md={4} xs={12}>
+    <Grid item md={6} xs={12}>
       <EntityLinksCard />
     </Grid>
-    <Grid item md={8} xs={12}>
-      <EntityHasSubcomponentsCard variant="gridItem" />
+    <Grid item md={12} xs={12}>
+      <EntityGithubPullRequestsOverviewCard />
     </Grid>
+    {/* <Grid item md={12} xs={12}>
+      <EntityHasSubcomponentsCard variant="gridItem" />
+    </Grid> */}
   </Grid>
 );
 
@@ -184,14 +186,8 @@ const serviceEntityPage = (
       <EntityGithubPullRequestsContent />
     </EntityLayout.Route>
 
-    <EntityLayout.Route
-      path="/code-insights"
-      title="Code Insights">
+    <EntityLayout.Route path="/code-insights" title="Code Insights">
       <EntityGithubInsightsContent />
-    </EntityLayout.Route>
-
-    <EntityLayout.Route path="/kubernetes" title="Kubernetes">
-      <EntityKubernetesContent refreshIntervalMs={30000} />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/api" title="API">
@@ -220,18 +216,10 @@ const serviceEntityPage = (
       <EntityAdrContent />
     </EntityLayout.Route>
 
-    <EntityLayout.Route
-      path="/security-insights"
-      title="Security Insights">
-      <EntitySecurityInsightsContent />
-    </EntityLayout.Route>
-
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
   </EntityLayout>
-
-  
 );
 
 const websiteEntityPage = (
@@ -244,16 +232,25 @@ const websiteEntityPage = (
       {cicdContent}
     </EntityLayout.Route>
 
-    <EntityLayout.Route
-      path="/code-insights"
-      title="Code Insights">
+    <EntityLayout.Route path="/code-insights" title="Code Insights">
       <EntityGithubInsightsContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/security-insights" title="Security Insights">
+      <Grid>
+        <Grid item sm={12} md={12} lg={12}>
+          <EntityGithubDependabotContent />
+        </Grid>
+        <Grid item sm={12} md={12} lg={12}>
+          <EntitySecurityInsightsContent />
+        </Grid>
+      </Grid>
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/pull-requests" title="Pull Requests">
       <EntityGithubPullRequestsContent />
     </EntityLayout.Route>
-    
+
     <EntityLayout.Route path="/kubernetes" title="Kubernetes">
       <EntityKubernetesContent refreshIntervalMs={30000} />
     </EntityLayout.Route>
@@ -271,12 +268,6 @@ const websiteEntityPage = (
 
     <EntityLayout.Route if={isAdrAvailable} path="/adrs" title="ADRs">
       <EntityAdrContent />
-    </EntityLayout.Route>
-
-    <EntityLayout.Route
-      path="/security-insights"
-      title="Security Insights">
-      <EntitySecurityInsightsContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/docs" title="Docs">
@@ -330,10 +321,10 @@ const apiPage = (
         <Grid item md={6}>
           <EntityAboutCard />
         </Grid>
-        <Grid item md={6} xs={12}>
-          <EntityCatalogGraphCard variant="gridItem" height={400} />
+        <Grid item md={6}>
+          <EntityCatalogGraphCard variant="gridItem" height={220} />
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid item md={12} xs={12}>
           <EntityLinksCard />
         </Grid>
         <Grid container item md={12}>
@@ -355,7 +346,6 @@ const apiPage = (
       </Grid>
     </EntityLayout.Route>
 
-
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
     </EntityLayout.Route>
@@ -364,19 +354,22 @@ const apiPage = (
       <EntityGithubPullRequestsContent />
     </EntityLayout.Route>
 
-    <EntityLayout.Route
-      path="/code-insights"
-      title="Code Insights">
+    <EntityLayout.Route path="/code-insights" title="Code Insights">
       <EntityGithubInsightsContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/security-insights" title="Security Insights">
+      <Grid>
+        <Grid item sm={12} md={12} lg={12}>
+          <EntityGithubDependabotContent />
+        </Grid>
+      </Grid>
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/kubernetes" title="Kubernetes">
       <EntityKubernetesContent refreshIntervalMs={30000} />
     </EntityLayout.Route>
-
-
   </EntityLayout>
-
 );
 
 const userPage = (

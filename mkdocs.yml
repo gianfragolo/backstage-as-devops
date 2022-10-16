@@ -6,11 +6,9 @@ edit_uri: edit/main/docs
 plugins:
   - techdocs-core
   - mermaid2
+  - search
 
 nav:
   - Overview:
       - Readme: 'README.md'
 
-  - Architecture Decision Records (ADRs):
-      - Overview: 'adrs/index.md'
-      - ADR001 - Architecture Decision Record (ADR) log: 'adrs/adr000-template.md'
