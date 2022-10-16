@@ -5852,7 +5852,7 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-dom@*", "@types/react-dom@<18.0.0":
+"@types/react-dom@*", "@types/react-dom@<18.0.0", "@types/react-dom@^17":
   version "17.0.17"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.17.tgz#2e3743277a793a96a99f1bf87614598289da68a1"
   integrity sha512-VjnqEmqGnasQKV0CWLevqMTXBYG9GbwuE6x3VetERLh0cq2LTptFE73MrQi2S7GkKXCf2GgwItB/melLnxfnsg==
@@ -6579,6 +6579,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@roadiehq/backstage-plugin-github-insights" "^2.0.5"
     "@roadiehq/backstage-plugin-github-pull-requests" "^2.2.7"
     "@roadiehq/backstage-plugin-iframe" "^1.1.2"
+    "@roadiehq/backstage-plugin-security-insights" "^2.0.10"
     backstage-plugin-techdocs-addon-mermaid "^0.3.1"
     history "^5.0.0"
     react "^17.0.2"
@@ -16291,9 +16292,9 @@ passport-onelogin-oauth@^0.0.1:
     uid2 "0.0.3"
 
 passport-saml@^3.1.2:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/passport-saml/-/passport-saml-3.2.1.tgz#c489a61a4c2dd93ddec1d53952a595b9f33e15e8"
-  integrity sha512-Y8aD94B6MTLht57BlBrDauEgvtWjuSeINKk7NadXlpT/OBmsoGGYPpb0FJeBtdyGX4GEbZARAkxvBEqsL8E7XQ==
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/passport-saml/-/passport-saml-3.2.3.tgz#a50d937007580719e9c2171a88b4b1cc558e43f6"
+  integrity sha512-QpwOO+s20V5NR1iHBH+a+dRjGkjE5YEv1ldsfCyHw9KRVMfH8e10ss3o4/VienmKnpglUSqEmOidbLnjjj4f/A==
   dependencies:
     "@xmldom/xmldom" "^0.7.5"
     debug "^4.3.2"
