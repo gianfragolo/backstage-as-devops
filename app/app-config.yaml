@@ -119,7 +119,15 @@ catalog:
       rules:
         - allow: [Component]        
     - type: url
+      target: https://github.com/gianfragolo/applepay-wrapper-docs/blob/master/catalog-info.yaml
+      rules:
+        - allow: [Component]        
+    - type: url
       target: https://github.com/gianfragolo/backstage-metadata/blob/main/templates/nodejs/template.yaml
+      rules:
+        - allow: [template]
+    - type: url
+      target: https://github.com/gianfragolo/backstage-metadata/blob/main/templates/documentation/template.yaml
       rules:
         - allow: [template]
     - type: url
