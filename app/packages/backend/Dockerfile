@@ -19,7 +19,7 @@ RUN apt-get update && \
     yarn config set python /usr/bin/python3
 
 # Install mkdocs
-RUN pip3 install mkdocs-techdocs-core==1.1.6 mkdocs-macros-plugin==0.6.0 mkdocstrings==0.19.0 mkdocs-mermaid2-plugin mkdocs-material mkpdfs-mkdocs mkdocs-pdf-export-plugin
+RUN pip3 install mkdocs-techdocs-core==1.1.6 mkdocs-macros-plugin==0.6.0 mkdocstrings==0.19.0 mkdocs-mermaid2-plugin mkdocs-material mkpdfs-mkdocs mkdocs-pdf-export-plugin mkdocs-minify-plugin
 # From here on we use the least-privileged `node` user to run the backend
 
 USER node
