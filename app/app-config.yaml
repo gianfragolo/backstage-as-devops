@@ -11,7 +11,7 @@ app:
             title: Chat
 
 organization:
-  name: Gianfragolo
+  name: DevOps Heroes
 
 backend:
   baseUrl: http://localhost:7007
