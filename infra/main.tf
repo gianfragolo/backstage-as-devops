@@ -47,6 +47,7 @@ resource "azurerm_linux_web_app" "dockerapp" {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
     APP_CONFIG_app_title                = "Backstage-${var.IMAGE_TAG}"
     APP_CONFIG_app_baseUrl              = "https://${local.appName}.azurewebsites.net:443"
+    ENABLE_PDF_EXPORT                   = "1"
     APP_CONFIG_backend_listen_port      = "7007"
     APP_CONFIG_backend_baseUrl          = "https://${local.appName}.azurewebsites.net"
     APP_CONFIG_backend_cors_origin      = "https://${local.appName}.azurewebsites.net"
