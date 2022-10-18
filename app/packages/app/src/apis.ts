@@ -13,7 +13,7 @@ const tools = [
     description:
       'Tech Radar is a list of technologies, complemented by an assessment result, called ring assignment.',
     url: '/tech-radar',
-    image: 'https://frogdesign.nyc3.cdn.digitaloceanspaces.com/wp-content/uploads/2022/03/07180744/22_Insights_technology-radar-how-we-build-ship-scale-digital-products.png',
+    image: '/radar.png',
     tags: ['standards', 'landscape'],
   },
   {
@@ -23,13 +23,13 @@ const tools = [
     url: '#',
     image:
       'https://avatars.githubusercontent.com/u/54465427?v=4',
-    tags: ['ci/cd'],
+    tags: ['ci/cd','automation'],
   },
   {
     title: 'Cost Insights',
     description: 'Insights into Okteto cloud costs for your organization.',
     url: '/cost-insights',
-    image: 'https://www.okteto.com/okteto-meta-image.png',
+    image: '/okteto.png',
     tags: ['cloud', 'finops'],
   },
 ];
