@@ -78,11 +78,16 @@ kubernetes:
           serviceAccountToken: ${OKTETO_TOKEN}
           caData: ${OKTETO_CADATA}
 
-proxy:
-  "/applepay-wrapper-lucamilan":
-    target: "https://applepay-wrapper-lucamilan.cloud.okteto.net"
-
 catalog:
+  # github:
+  #   mainBranches:
+  #     organization: "gianfragolo"
+  #     filters:
+  #       branch: "main"
+  #   masterBranches:
+  #     organization: "gianfragolo"
+  #     filters:
+  #       branch: "master"
   rules:
     - allow: [User, Group, Component, System, API, Resource, Location, Domain]
   locations:
@@ -113,15 +118,15 @@ catalog:
     - type: url
       target: https://github.com/gianfragolo/payment-service/blob/master/catalog-info.yaml
       rules:
-        - allow: [Component]        
+        - allow: [Component]
     - type: url
       target: https://github.com/gianfragolo/acme-landing-ui/blob/master/catalog-info.yaml
       rules:
-        - allow: [Component]        
+        - allow: [Component]
     - type: url
       target: https://github.com/gianfragolo/applepay-wrapper-docs/blob/master/catalog-info.yaml
       rules:
-        - allow: [Component]        
+        - allow: [Component]
     - type: url
       target: https://github.com/gianfragolo/backstage-metadata/blob/main/templates/nodejs/template.yaml
       rules:
