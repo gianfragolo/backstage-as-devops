@@ -1,5 +1,7 @@
 # Backstage As Devops
 
+W SD!
+
 How to setup Backstage with DevOps in mind.
 
 Viva DevoPs
