@@ -4,7 +4,7 @@ W SD!
 
 How to setup Backstage with DevOps in mind.
 
-Viva DevoPs
+Viva Devo
 
 ## What is Gianfragolo Developer Portal ?
 
