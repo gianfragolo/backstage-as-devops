@@ -2,9 +2,9 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: backstage
-  description: DevOps Heroes 2022 a sample Backstage app.
+  description: Gianfragolo a sample Backstage app.
   links:
-    - url: https://doh22-backstage-dockerapp.azurewebsites.net/
+    - url: https://gianfragolo-backstage.azurewebsites.net/
       title: Website
     - url: https://github.com/gianfragolo/backstage-as-devops
       title: Github
@@ -12,7 +12,7 @@ metadata:
     - url: https://hub.docker.com/repository/docker/lucamilan/backstage
       title: Dockerhub
       icon: docker
-    - url: https://doh22-backstage-dockerapp.scm.azurewebsites.net/api/logstream
+    - url: https://gianfragolo-backstage-dockerapp.scm.azurewebsites.net/api/logstream
       title: Azure Log Stream      
       icon: cloud
   tags:
