@@ -9,7 +9,7 @@ terraform {
   backend "azurerm" {
     storage_account_name = "tfstate560412721"
     container_name       = "backstage"
-    key                  = "terraform.tfstate"
+    key                  = "prod.terraform.tfstate"
   }
 }
 
