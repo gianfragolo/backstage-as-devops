@@ -57,9 +57,9 @@ resource "azurerm_linux_web_app" "dockerapp" {
     GITHUB_TOKEN              = var.GITHUB_TOKEN
     AUTH_GITHUB_CLIENT_ID     = var.AUTH_GITHUB_CLIENT_ID
     AUTH_GITHUB_CLIENT_SECRET = var.AUTH_GITHUB_CLIENT_SECRET
-    OKTETO_URL                = var.OKTETO_URL
-    OKTETO_TOKEN              = var.OKTETO_TOKEN
-    OKTETO_CADATA             = var.OKTETO_CADATA
+    # OKTETO_URL                = var.OKTETO_URL
+    # OKTETO_TOKEN              = var.OKTETO_TOKEN
+    # OKTETO_CADATA             = var.OKTETO_CADATA
 
     # Settings for private Container 
     DOCKER_REGISTRY_SERVER_URL      = "https://docker.io"
