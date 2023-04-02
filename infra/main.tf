@@ -30,7 +30,7 @@ resource "azurerm_service_plan" "appserviceplan" {
   location            = azurerm_resource_group.group.location
   resource_group_name = azurerm_resource_group.group.name
   os_type             = "Linux"
-  sku_name            = "F1"
+  sku_name            = "D1"
   tags                = local.tags
 }
 
